@@ -15,8 +15,6 @@ https://www.kaggle.com/competitions/titanic
 
 # MADE 
 ## [MADE Contest Summer 2022](MADE)
-[Task 1](MADE/TaskSummer2022/TaskML 1) - Анализ признаков, поиск корреляций
+[1. Бинарная классификация](MADE/TaskSummer2022/MADE_Task_1) - Анализ признаков, поиск корреляций
 
-[Task 2](MADE/TaskSummer2022/TaskML 2) - Подсчет квадратов (решение на OpenCV)
-
-
+[2. Подсчет квадратов на изображении](MADE/TaskSummer2022/MADE_Task_2) - Подсчет квадратов (решение на OpenCV)
