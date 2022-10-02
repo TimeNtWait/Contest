@@ -2,7 +2,7 @@ Contest List:
 
 # Kaggle Competitions:
 
-## [Titanic](titanic) (Top 5%: 556th from 13970th)
+## [Titanic](kaggle/titanic) (Top 5%: 556th from 13970th)
 
 Titanic - Machine Learning from Disaster
 
