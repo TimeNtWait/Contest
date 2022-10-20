@@ -1,22 +1,33 @@
 # Kaggle Competitions: Outflow of user (DeepLearningSchool)
+Школа глубокого обучения ФПМИ МФТИ
+Домашнее задание. Продвинутый поток. Осень 2022
 
-_Top _%: 
-
-Score: ___
-Place: __th from ___th_
-
-Задача: "Предсказание оттока пользователей (весна 2021). Это соревнование является частью курса DeepLearningSchool"
-https://www.kaggle.com/competitions/advanced-dls-spring-2021
-***
+Необходимо смоделировать отток клиентов телеком компании (предсказать, что клиент уйдет).
 ### Исходные данные:
-    - Variable    Definition  Key
-    - survival    Survival    (0 = No, 1 = Yes)
-    - pclass  Ticket class    (1 = 1st, 2 = 2nd, 3 = 3rd)
-    - sex Sex 
-    - Age Age in years    
-    - sibsp   # of siblings/spouses aboard the Titanic  
-    - parch   # of parents/children aboard the Titanic  
-    - ticket  Ticket number   
-    - fare    Passenger fare  
-    - cabin   Cabin number    
-    - embarked    Port of Embarkation (C = Cherbourg, Q = Queenstown, S = Southampton) 
+     Числовые признаки:
+        'ClientPeriod' - Период, сколько клиент пользуется услугами 
+        'MonthlySpending' - Ежемесячный платеж клиента за услуги
+        'TotalSpent' - Общая сумма, которую клиент заплатил за весь период пользования услугами
+     Категориальные признаки:
+        'Sex' - пол клиента
+        'IsSeniorCitizen' - клиент пожилой или нет 0/1
+        'HasPartner' - есть ли супруг
+        'HasChild' - есть ли дети
+        'PaymentMethod' - способы оплаты
+        'HasPhoneService', 'HasMultiplePhoneNumbers', 'HasInternetService', 'HasOnlineSecurityService', 'HasOnlineBackup', 'HasDeviceProtection', 'HasTechSupportAccess', 'HasOnlineTV', 'HasMovieSubscription','HasContractPhone', 'IsBillingPaperless'  - набор признаков отвечающих на вопрос подключена ли услуга/сервис и способ подключения     
+    Целевая переменная:
+        "Churn" - 0/1 - указание, на то что клиент ушел или остался
+
+
+## Обработка данных:
+    1. В категориальных данных в качестве значений встречаются синонимы, например "No phone service" и "No" - является одним и тем же. Осуществлено приведение всех значений к одному виду
+    2. числовые признаки "TotalSpent" и "ClientPeriod" и "MonthlySpending" - имеют зависимость: "TotalSpent" = ~("ClientPeriod" * "MonthlySpending"). Это особенность данных используется для устраения пропусков данных в числовых признаках
+    3. Выявлено появление аномальных данных у признака "ClientPeriod", все значения больше верхнего порога приведены к верхнему порогу
+    4. Произведен поиск важных признаков с использованием RandomForestClassifier. Наименее значимые признаки исключены  
+    5. Произвелен поиск и удаление дубликатов строк (по выбранным важным признакам). Также удалены дубликаты, когда у одинаковых значений признаков различные целевые переменные 
+
+### Построение модели
+    - Используя LogisticRegressionCV  произведен подбор гиперпараметра "C"
+    - Используя GridSearchCV произведен подбор оптимаьлных гипперпараметров для RandomForestClassifier
+    - Создан стеккинг на основе: CatBoostClassifier и RandomForestClassifier``
+ 
