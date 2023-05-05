@@ -18,3 +18,11 @@ https://www.kaggle.com/competitions/titanic
 [1. Бинарная классификация](MADE/TaskSummer2022/MADE_Task_1) - Анализ признаков, поиск корреляций
 
 [2. Подсчет квадратов на изображении](MADE/TaskSummer2022/MADE_Task_2) - Подсчет квадратов (решение на OpenCV)
+
+
+
+# Yandex_Contest
+## [Yandex Contest](../../Yandex_Contest)
+[1. ML Contest 2021](../../Yandex_Contest/ML_Contest_2021)
+[2. ML Contest 2022](../../Yandex_Contest/ML_Contest_2022)
+  
